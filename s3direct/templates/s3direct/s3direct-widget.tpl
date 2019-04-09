@@ -1,5 +1,5 @@
 <div class="s3direct" data-policy-url="{{ policy_url }}" data-signing-url="{{ signing_url }}">
-K  <input class="csrf-cookie-name" type="hidden" value="{{ csrf_cookie_name }}">
+  <input class="csrf-cookie-name" type="hidden" value="{{ csrf_cookie_name }}">
   <input class="bucket-name" type="hidden" value="{{ bucket_name }}">
   <input class="original-file-name" type="hidden" value="{{ original_file_name }}">
   <input class="key-name" type="hidden" value="{{ key_name }}">
