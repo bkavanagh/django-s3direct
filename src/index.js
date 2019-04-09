@@ -305,9 +305,7 @@ const removeUpload = e => {
 };
 
 const addHandlers = el => {
-  const url = el.querySelector('.file-url');
   const input = el.querySelector('.file-input');
-  const remove = el.querySelector('.file-remove');;
   remove.addEventListener('click', removeUpload, false);
   input.addEventListener('change',calculateMD5Hash, false);
 };
