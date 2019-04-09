@@ -75,8 +75,14 @@ const beginUpload = element => {
 };
 
 const finishUpload = (element, endpoint, bucket, objectKey) => {
+  const bucketName = bucket;
+  const objectKeyName = objectKey;
   const link = element.querySelector('.file-link');
   const url = element.querySelector('.file-url');
+  const bucketInput = element.querySelector('.bucket-name');
+  const keyInput = element.querySelector('.key-name');
+  bucketInput.value = bucketName;
+  keyInput.value = objectKeyName;
   url.value = endpoint + '/' + bucket + '/' + objectKey;
   link.setAttribute('href', url.value);
   link.innerHTML = parseNameFromUrl(url.value)
