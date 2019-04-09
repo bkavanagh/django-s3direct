@@ -81,19 +81,10 @@ const finishUpload = (element, endpoint, bucket, objectKey) => {
   const bucketName = bucket;
   const form = document.querySelector('form');
   const objectKeyName = objectKey;
-  const link = element.querySelector('.file-link');
-  const url = element.querySelector('.file-url');
   const bucketInput = element.querySelector('.bucket-name');
   const keyInput = element.querySelector('.key-name');
   bucketInput.value = bucketName;
   keyInput.value = objectKeyName;
-  url.value = endpoint + '/' + bucket + '/' + objectKey;
-  link.setAttribute('href', url.value);
-  link.innerHTML = parseNameFromUrl(url.value)
-    .split('/')
-    .pop();
-  element.className = 's3direct link-active';
-  element.querySelector('.bar').style.width = '0%';
   disableSubmit(false);
   form.dispatchEvent(uploadCompletedEvent);
 };
@@ -314,13 +305,7 @@ const removeUpload = e => {
 };
 
 const addHandlers = el => {
-  const url = el.querySelector('.file-url');
   const input = el.querySelector('.file-input');
-  const remove = el.querySelector('.file-remove');
-  const status = url.value === '' ? 'form' : 'link';
-
-  el.className = 's3direct ' + status + '-active';
-  remove.addEventListener('click', removeUpload, false);
   input.addEventListener('change',calculateMD5Hash, false);
 };
 
