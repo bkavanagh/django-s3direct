@@ -301,12 +301,11 @@ const removeUpload = e => {
   const el = e.target.parentElement;
   el.querySelector('.file-url').value = '';
   el.querySelector('.file-input').value = '';
-  el.className = 's3direct form-active';
+  el.className = 's3direct';
 };
 
 const addHandlers = el => {
   const input = el.querySelector('.file-input');
-  remove.addEventListener('click', removeUpload, false);
   input.addEventListener('change',calculateMD5Hash, false);
 };
 
