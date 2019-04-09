@@ -145,6 +145,7 @@ const generateCustomAuthMethod = (element, signingUrl, dest) => {
             resolve(response.s3ObjKey);
             break;
           case 403:
+          case 403:
           default:
             reject(response.error);
             break;
@@ -262,7 +263,7 @@ function calculateMD5Hash (event){
 }
 
 const checkFileAndInitiateUpload = (event, md5) => {
-  console.log(event, md5);
+
   const element = event.target.parentElement;
   const file = element.querySelector('.file-input').files[0];
   const dest = element.querySelector('.file-dest').value;
@@ -275,7 +276,7 @@ const checkFileAndInitiateUpload = (event, md5) => {
   const form = new FormData();
   const headers = { 'X-CSRFToken': getCsrfToken(element) };
   const name = md5;
-  console.log('MD% IS ', md5);
+
   form.append('dest', dest);
   form.append('name', name);
   form.append('type', file.type);
