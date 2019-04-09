@@ -270,6 +270,8 @@ const checkFileAndInitiateUpload = (event, md5) => {
   const element = event.target.parentElement;
   const file = element.querySelector('.file-input').files[0];
   const dest = element.querySelector('.file-dest').value;
+  const originalFileName = element.querySelector('.original-file-name');
+  originalFileName.value = file.name;
   const destCheckUrl = element.getAttribute('data-policy-url');
   const signerUrl = element.getAttribute('data-signing-url');
   const form = new FormData();
