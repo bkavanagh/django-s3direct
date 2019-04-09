@@ -267,10 +267,16 @@ const checkFileAndInitiateUpload = (event, md5) => {
   const element = event.target.parentElement;
   const file = element.querySelector('.file-input').files[0];
   const dest = element.querySelector('.file-dest').value;
+
   const originalFileName = element.querySelector('.original-file-name');
-  element.querySelector('.md5').value = md5;
-  element.querySelector('.content-length').value = file.size;
   originalFileName.value = file.name;
+
+  const md5Input = element.querySelector('.md5');
+  md5Input.value = md5;
+
+  const contentLengthInput = element.querySelector('.content-length');
+  contentLengthInput.value = file.size;
+
   const destCheckUrl = element.getAttribute('data-policy-url');
   const signerUrl = element.getAttribute('data-signing-url');
   const form = new FormData();
