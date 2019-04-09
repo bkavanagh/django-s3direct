@@ -6,6 +6,9 @@ import SparkMD5 from 'spark-md5';
 import './css/bootstrap.css';
 import './css/styles.css';
 
+
+const uploadCompletedEvent = new CustomEvent('uploadCompleted', {});
+
 const request = (method, url, data, headers, el, cb) => {
   let req = new XMLHttpRequest();
   req.open(method, url, true);
@@ -76,6 +79,7 @@ const beginUpload = element => {
 
 const finishUpload = (element, endpoint, bucket, objectKey) => {
   const bucketName = bucket;
+  const form = document.querySelector('form');
   const objectKeyName = objectKey;
   const link = element.querySelector('.file-link');
   const url = element.querySelector('.file-url');
@@ -91,6 +95,7 @@ const finishUpload = (element, endpoint, bucket, objectKey) => {
   element.className = 's3direct link-active';
   element.querySelector('.bar').style.width = '0%';
   disableSubmit(false);
+  form.dispatchEvent(uploadCompletedEvent);
 };
 
 const computeMd5 = data => {
